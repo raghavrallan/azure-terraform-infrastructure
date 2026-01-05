@@ -79,7 +79,7 @@ module "apim_subnet" {
 **Created NSG for APIM:**
 ```hcl
 resource "azurerm_network_security_group" "apim_nsg" {
-  name                = "ZTF-nsg-apim-prod-eastus-001"
+  name                = "INFRA-nsg-apim-prod-eastus-001"
   location            = var.rg_location
   resource_group_name = var.rg_name
 
@@ -148,7 +148,7 @@ resource "azurerm_subnet_network_security_group_association" "apim_nsg_associati
 ```hcl
 # modules/api_management/main.tf
 resource "azurerm_api_management" "api_management" {
-  name                = "ZTF-api-apimanagement-${var.Env}-eastus-${var.counts}-v2"
+  name                = "INFRA-api-apimanagement-${var.Env}-eastus-${var.counts}-v2"
   location            = var.rg_location
   resource_group_name = var.rg_name
   publisher_name      = var.publisher_name
@@ -198,7 +198,7 @@ variable "backend_url" {
 ```hcl
 # modules/container_environment/main.tf
 resource "azurerm_container_app_environment" "app_enviornment" {
-  name                               = "ZTF-cae-appenv-${var.Env}-${var.rg_location}-${var.counts}"
+  name                               = "INFRA-cae-appenv-${var.Env}-${var.rg_location}-${var.counts}"
   location                           = var.rg_location
   resource_group_name                = var.rg_name
   log_analytics_workspace_id         = var.log_analytics_id
@@ -299,27 +299,27 @@ module "api_management" {
 ```bash
 # Create Private DNS zone
 az network private-dns zone create \
-  --resource-group ZTF-PROD-MISC \
+  --resource-group INFRA-PROD-MISC \
   --name yellowmeadow-9ccbae2e.eastus.azurecontainerapps.io
 
 # Link DNS zone to VNet
 az network private-dns link vnet create \
-  --resource-group ZTF-PROD-MISC \
+  --resource-group INFRA-PROD-MISC \
   --zone-name yellowmeadow-9ccbae2e.eastus.azurecontainerapps.io \
   --name container-app-link \
-  --virtual-network ZTF-vnw-network-prod-eastus-001 \
+  --virtual-network INFRA-vnw-network-prod-eastus-001 \
   --registration-enabled false
 
 # Create wildcard A record
 az network private-dns record-set a create \
-  --resource-group ZTF-PROD-MISC \
+  --resource-group INFRA-PROD-MISC \
   --zone-name yellowmeadow-9ccbae2e.eastus.azurecontainerapps.io \
   --name "*" \
   --ttl 300
 
 # Add IP address to record
 az network private-dns record-set a add-record \
-  --resource-group ZTF-PROD-MISC \
+  --resource-group INFRA-PROD-MISC \
   --zone-name yellowmeadow-9ccbae2e.eastus.azurecontainerapps.io \
   --record-set-name "*" \
   --ipv4-address 10.0.2.251

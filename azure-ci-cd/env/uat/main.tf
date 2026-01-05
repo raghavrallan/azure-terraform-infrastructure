@@ -18,7 +18,7 @@ module "frontend" {
   app_suite             = "Frontend"
   tech                  = "React"
   trigger               = false
-  github_repo           = "Sarai-Platforms-LLC/ztfortio_frontend"
+  github_repo           = "YourOrg/frontend-app"
   github_branch         = "uat"
   ymlpath               = "azure/uat-pipeline.yml"
   service_connection_id = module.github_service_connection.id
@@ -37,7 +37,7 @@ module "backend" {
   app_suite             = "Backend"
   tech                  = "dotnet"
   trigger               = false
-  github_repo           = "Sarai-Platforms-LLC/ztfortio_backend"
+  github_repo           = "YourOrg/backend-app"
   github_branch         = "uat"
   ymlpath               = "azure/uat_pipeline.yml"
   service_connection_id = module.github_service_connection.id
@@ -56,7 +56,7 @@ module "backend" {
     },
     {
       name         = "RG_NAME"
-      secret_value = "ZTF-UAT-BACKEND"
+      secret_value = "INFRA-UAT-BACKEND"
     }
   ]
 }

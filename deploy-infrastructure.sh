@@ -200,7 +200,7 @@ setup_ssl_certificate() {
     openssl req -x509 -newkey rsa:4096 -sha256 -days 365 \
         -nodes -keyout "$CERT_DIR/ssl-certificate.key" \
         -out "$CERT_DIR/ssl-certificate.crt" \
-        -subj "/CN=ztf-appgateway.example.com/O=ZTF/C=US" \
+        -subj "/CN=ztf-appgateway.example.com/O=INFRA/C=US" \
         -extensions san \
         -config <(echo "[req]";
                   echo "distinguished_name=req";
@@ -283,7 +283,7 @@ deploy_sample_api() {
     # Restart Container App to use new image
     print_info "Restarting Container App to use new image..."
     CONTAINER_APP_NAME=$(cd azure-terrafrom/layers/400_backend/env/prod && terraform output -raw container_app_name 2>/dev/null)
-    RG_NAME="ZTF-PROD-BACKEND"
+    RG_NAME="INFRA-PROD-BACKEND"
 
     if az containerapp revision restart \
         --name "$CONTAINER_APP_NAME" \
@@ -336,8 +336,8 @@ verify_deployment() {
 
     # Check backend health
     print_info "Checking Application Gateway backend health..."
-    APP_GW_NAME="ZTF-apg-appgateway-prod-eus-001"
-    RG_NAME="ZTF-PROD-BACKEND"
+    APP_GW_NAME="INFRA-apg-appgateway-prod-eus-001"
+    RG_NAME="INFRA-PROD-BACKEND"
 
     HEALTH_STATUS=$(az network application-gateway show-backend-health \
         --name "$APP_GW_NAME" \

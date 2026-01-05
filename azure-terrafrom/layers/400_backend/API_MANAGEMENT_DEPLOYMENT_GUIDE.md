@@ -95,10 +95,10 @@ After deployment, verify the resources:
 terraform output
 
 # Check API Management
-az apim show --name <api-management-name> --resource-group ZTF-PROD-BACKEND
+az apim show --name <api-management-name> --resource-group INFRA-PROD-BACKEND
 
 # Check Container App
-az containerapp show --name <container-app-name> --resource-group ZTF-PROD-BACKEND-CA
+az containerapp show --name <container-app-name> --resource-group INFRA-PROD-BACKEND-CA
 ```
 
 ### 5. Test the API
@@ -178,7 +178,7 @@ A wildcard operation (`/*`) proxies all requests to the backend:
 
 ```bash
 az apim update --name <api-management-name> \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --set hostnameConfigurations[0].hostName=api.yourdomain.com
 ```
 
@@ -222,12 +222,12 @@ If API Management cannot reach the Container App:
 
 1. Verify Container App is running:
    ```bash
-   az containerapp show --name <container-app-name> --resource-group ZTF-PROD-BACKEND-CA
+   az containerapp show --name <container-app-name> --resource-group INFRA-PROD-BACKEND-CA
    ```
 
 2. Check Container App ingress configuration:
    ```bash
-   az containerapp ingress show --name <container-app-name> --resource-group ZTF-PROD-BACKEND-CA
+   az containerapp ingress show --name <container-app-name> --resource-group INFRA-PROD-BACKEND-CA
    ```
 
 3. Verify VNet integration (Container App Environment should be in the same VNet)
@@ -252,7 +252,7 @@ If you get 502/504 errors:
 1. Verify backend URL is correct in API Management
 2. Check Container App logs:
    ```bash
-   az containerapp logs show --name <container-app-name> --resource-group ZTF-PROD-BACKEND-CA
+   az containerapp logs show --name <container-app-name> --resource-group INFRA-PROD-BACKEND-CA
    ```
 3. Test Container App health endpoint directly from VNet
 

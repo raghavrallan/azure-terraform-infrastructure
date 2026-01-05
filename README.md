@@ -1,7 +1,7 @@
-# ZTFortio
+# Azure Infrastructure Platform
 
-This is the top-level Terraform project for provisioning infrastructure
-for the ZTFortio application.
+This is the top-level Terraform project for provisioning enterprise-grade
+Azure infrastructure using Infrastructure as Code (IaC) principles.
 
 ## Layers
 

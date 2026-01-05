@@ -11,5 +11,5 @@ variable "subscription_id" {
 
 variable "org_service_url" {
   type    = string
-  default = "https://dev.azure.com/ZTFortio/"
+  default = "https://dev.azure.com/YourOrganization/"
 }

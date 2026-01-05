@@ -1,5 +1,5 @@
 resource "azurerm_key_vault" "key_vault" {
-  name                        = "ZTF-${upper(var.Env)}-SECRET-V2"
+  name                        = "INFRA-${upper(var.Env)}-SECRET-V2"
   location                    = var.rg_location
   resource_group_name         = var.rg_name
   enabled_for_disk_encryption = true
@@ -17,7 +17,7 @@ resource "azurerm_key_vault" "key_vault" {
 }
 
 resource "azurerm_user_assigned_identity" "identity" {
-  name                = "ZTF-${var.Env}-managed-identity"
+  name                = "INFRA-${var.Env}-managed-identity"
   resource_group_name = var.rg_name
   location            = var.rg_location
   tags = {

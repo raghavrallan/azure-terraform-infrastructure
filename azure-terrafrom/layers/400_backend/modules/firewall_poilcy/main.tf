@@ -1,5 +1,5 @@
 resource "azurerm_web_application_firewall_policy" "firewall" {
-  name                = "ZTF-waf-firewall-${var.Env}-${local.location}-${var.counts}"
+  name                = "INFRA-waf-firewall-${var.Env}-${local.location}-${var.counts}"
   resource_group_name = var.rg_name
   location            = var.rg_location
 

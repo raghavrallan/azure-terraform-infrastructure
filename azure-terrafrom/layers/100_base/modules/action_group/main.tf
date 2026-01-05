@@ -1,5 +1,5 @@
 resource "azurerm_monitor_action_group" "action_group" {
-  name                = "ZTF-acg-actiongroup-${var.Env}-global-${var.counts}"
+  name                = "INFRA-acg-actiongroup-${var.Env}-global-${var.counts}"
   resource_group_name = var.rg_name
   short_name          = "${var.Env}-alt"
 

@@ -119,8 +119,8 @@ function Remove-OrphanedResources {
     Write-Section "Cleaning Up Orphaned Resources"
 
     # Check if resource groups exist and have resources
-    $backendRg = "ZTF-PROD-BACKEND"
-    $baseRg = "ZTF-PROD-BASE"
+    $backendRg = "INFRA-PROD-BACKEND"
+    $baseRg = "INFRA-PROD-BASE"
 
     try {
         # Check backend resource group

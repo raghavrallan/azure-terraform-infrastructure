@@ -1,7 +1,7 @@
 
 resource "azuredevops_build_definition" "trigger_pipeline" {
   project_id = var.project_id
-  name       = "${upper(var.Env)}-ZTF-${var.app_suite} (${var.tech})"
+  name       = "${upper(var.Env)}-INFRA-${var.app_suite} (${var.tech})"
   path       = "\\"
 
   ci_trigger {

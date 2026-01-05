@@ -19,7 +19,7 @@
 ## 📊 Infrastructure Status
 
 ### Application Gateway
-- **Name**: ZTF-apg-appgateway-prod-eus-001
+- **Name**: INFRA-apg-appgateway-prod-eus-001
 - **SKU**: Standard_v2 (Developer Tier)
 - **Capacity**: 1 instance
 - **Public IP**: **20.169.239.74**
@@ -48,8 +48,8 @@
 ### Backend Health Check
 ```bash
 az network application-gateway show-backend-health \
-  --name ZTF-apg-appgateway-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND
+  --name INFRA-apg-appgateway-prod-eus-001 \
+  --resource-group INFRA-PROD-BACKEND
 ```
 **Result**: ✅ **Healthy**
 
@@ -69,7 +69,7 @@ curl -kL https://20.169.239.74/
     "info": "/api/info",
     "test": "/api/test"
   },
-  "message": "Welcome to ZTF Sample API",
+  "message": "Welcome to INFRA Sample API",
   "status": "healthy",
   "timestamp": "2025-12-29T20:04:54.881963",
   "version": "1.0.0"
@@ -142,12 +142,12 @@ Container App Environment (VNet Integrated)
 
 ### Base Layer (100_base)
 1. **Application Gateway Subnet**
-   - Name: ZTF-vnw-subnet-prod-eastus-app-gateway
+   - Name: INFRA-vnw-subnet-prod-eastus-app-gateway
    - CIDR: 10.0.4.0/24
-   - VNet: ZTF-vnw-network-prod-eastus-001
+   - VNet: INFRA-vnw-network-prod-eastus-001
 
 2. **Public IP**
-   - Name: ZTF-pip-prod-eastus-appgw-001
+   - Name: INFRA-pip-prod-eastus-appgw-001
    - Address: 20.169.239.74
    - SKU: Standard
    - Allocation: Static
@@ -155,12 +155,12 @@ Container App Environment (VNet Integrated)
 3. **SSL Certificate**
    - Name: ssl-certificate
    - Type: Self-signed
-   - Location: Key Vault (ZTF-PROD-SECRET)
+   - Location: Key Vault (INFRA-PROD-SECRET)
    - Valid: 365 days
 
 ### Backend Layer (400_backend)
 1. **Application Gateway**
-   - Name: ZTF-apg-appgateway-prod-eus-001
+   - Name: INFRA-apg-appgateway-prod-eus-001
    - SKU: Standard_v2
    - Capacity: 1 instance
    - Frontend: Port 443 (HTTPS), Port 80 (HTTP→HTTPS redirect)
@@ -292,8 +292,8 @@ curl -kL https://20.169.239.74/api/echo \
 ### Check Backend Health
 ```bash
 az network application-gateway show-backend-health \
-  --name ZTF-apg-appgateway-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --name INFRA-apg-appgateway-prod-eus-001 \
+  --resource-group INFRA-PROD-BACKEND \
   --query "backendAddressPools[0].backendHttpSettingsCollection[0].servers[0]"
 ```
 
@@ -301,7 +301,7 @@ az network application-gateway show-backend-health \
 ```bash
 az containerapp logs show \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --follow
 ```
 
@@ -377,7 +377,7 @@ az containerapp logs show \
 **Application Gateway Public IP**: `20.169.239.74`
 **Container App FQDN**: `ztf-cap-container-prod-eus-001.calmsky-848b0baf.eastus.azurecontainerapps.io`
 **ACR**: `ztfacrregistoryprodeastus001.azurecr.io`
-**Resource Group**: `ZTF-PROD-BACKEND`
+**Resource Group**: `INFRA-PROD-BACKEND`
 **Region**: `East US`
 
 **Test URL**: `https://20.169.239.74/api/health`

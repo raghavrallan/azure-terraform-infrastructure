@@ -15,7 +15,7 @@ variable "subscription_id" {
 variable "rg_name" {
   description = "The name of the resource group"
   type        = string
-  default     = "ZTF-UAT-STORAGE"
+  default     = "INFRA-UAT-STORAGE"
 }
 
 variable "rg_location" {

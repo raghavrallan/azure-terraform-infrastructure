@@ -1,5 +1,5 @@
 resource "azurerm_application_insights" "insight" {
-  name                = "ZTF-ain-insight-${var.Env}-eastus-${var.counts}"
+  name                = "INFRA-ain-insight-${var.Env}-eastus-${var.counts}"
   location            = var.rg_location
   resource_group_name = var.rg_name
   workspace_id        = var.workspace_id

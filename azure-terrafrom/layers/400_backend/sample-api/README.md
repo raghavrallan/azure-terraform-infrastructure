@@ -18,7 +18,7 @@ Welcome message with available endpoints
 **Response**:
 ```json
 {
-  "message": "Welcome to ZTF Sample API",
+  "message": "Welcome to INFRA Sample API",
   "status": "healthy",
   "version": "1.0.0",
   "timestamp": "2025-12-30T10:00:00.000000",

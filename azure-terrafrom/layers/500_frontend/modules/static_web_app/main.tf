@@ -1,5 +1,5 @@
 resource "azurerm_static_web_app" "static_web_app" {
-  name                = "ZTF-swa-webapp-${var.Env}-centralus-${var.counts}"
+  name                = "INFRA-swa-webapp-${var.Env}-centralus-${var.counts}"
   resource_group_name = var.rg_name
   location            = "centralus"
   sku_tier            = var.sku

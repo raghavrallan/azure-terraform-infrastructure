@@ -95,7 +95,7 @@ curl https://ztf-cap-container-prod-eus-001.calmsky-848b0baf.eastus.azurecontain
 ```bash
 az containerapp show \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --query "properties.provisioningState"
 ```
 
@@ -103,7 +103,7 @@ az containerapp show \
 ```bash
 az containerapp logs show \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --follow
 ```
 
@@ -167,15 +167,15 @@ Internet → Application Gateway (Public IP)
 ### Container App Management:
 ```bash
 # Show container app details
-az containerapp show --name ztf-cap-container-prod-eus-001 --resource-group ZTF-PROD-BACKEND
+az containerapp show --name ztf-cap-container-prod-eus-001 --resource-group INFRA-PROD-BACKEND
 
 # List replicas
-az containerapp replica list --name ztf-cap-container-prod-eus-001 --resource-group ZTF-PROD-BACKEND
+az containerapp replica list --name ztf-cap-container-prod-eus-001 --resource-group INFRA-PROD-BACKEND
 
 # Update to new image
 az containerapp update \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --image ztfacrregistoryprodeastus001.azurecr.io/sample-api:v2.0
 ```
 

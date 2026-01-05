@@ -11,7 +11,7 @@ module "cosmosdb_account" {
 module "cosmos_database" {
   source              = "../../modules/cosmosdb"
   cosmos_account_name = module.cosmosdb_account.name
-  database_name       = "ZTF-uat-db"
+  database_name       = "INFRA-uat-db"
   throughput          = 400
   rg_name             = var.rg_name
 

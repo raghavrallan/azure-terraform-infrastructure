@@ -1,5 +1,5 @@
 resource "azurerm_virtual_network" "virtual_network" {
-  name                = "ZTF-vnw-network-${var.Env}-${var.rg_location}-${var.counts}"
+  name                = "INFRA-vnw-network-${var.Env}-${var.rg_location}-${var.counts}"
   location            = var.rg_location
   resource_group_name = var.rg_name
   address_space       = [var.cidr_v_net]

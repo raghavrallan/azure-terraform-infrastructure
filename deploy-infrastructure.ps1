@@ -218,7 +218,7 @@ subjectAltName=DNS:ztf-appgateway.example.com,DNS:*.ztf-appgateway.example.com
     openssl req -x509 -newkey rsa:4096 -sha256 -days 365 `
         -nodes -keyout "$certDir\ssl-certificate.key" `
         -out "$certDir\ssl-certificate.crt" `
-        -subj "/CN=ztf-appgateway.example.com/O=ZTF/C=US" `
+        -subj "/CN=ztf-appgateway.example.com/O=INFRA/C=US" `
         -extensions san `
         -config $configFile 2>&1 | Tee-Object -FilePath $LogFile -Append
 
@@ -303,7 +303,7 @@ function Deploy-SampleAPI {
     Push-Location "azure-terrafrom\layers\400_backend\env\prod"
     $containerAppName = terraform output -raw container_app_name 2>$null
     Pop-Location
-    $rgName = "ZTF-PROD-BACKEND"
+    $rgName = "INFRA-PROD-BACKEND"
 
     try {
         az containerapp revision restart `
@@ -369,8 +369,8 @@ function Test-Deployment {
 
     # Check backend health
     Write-Info "Checking Application Gateway backend health..."
-    $appGwName = "ZTF-apg-appgateway-prod-eus-001"
-    $rgName = "ZTF-PROD-BACKEND"
+    $appGwName = "INFRA-apg-appgateway-prod-eus-001"
+    $rgName = "INFRA-PROD-BACKEND"
 
     try {
         $healthStatus = az network application-gateway show-backend-health `

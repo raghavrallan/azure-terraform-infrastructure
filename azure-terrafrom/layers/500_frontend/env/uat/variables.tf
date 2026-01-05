@@ -15,5 +15,5 @@ variable "rg_location" {
 }
 
 variable "rg_name" {
-  default = "ZTF-UAT-FRONTEND"
+  default = "INFRA-UAT-FRONTEND"
 }

@@ -1,5 +1,5 @@
 resource "azurerm_log_analytics_workspace" "log_analytics" {
-  name                = "ZTF-law-analytics-${var.Env}-${var.rg_location}-${var.counts}"
+  name                = "INFRA-law-analytics-${var.Env}-${var.rg_location}-${var.counts}"
   location            = var.rg_location
   resource_group_name = var.rg_name
   sku                 = "PerGB2018"

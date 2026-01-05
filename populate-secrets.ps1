@@ -1,12 +1,12 @@
 # Populate Key Vault Secrets
 # This script populates the Key Vault with secrets needed for the backend layer
 
-$keyVaultName = "ZTF-PROD-SECRET-V2"
+$keyVaultName = "INFRA-PROD-SECRET-V2"
 $storageAccountName = "ztfprodstorage001v2"
 $cosmosAccountName = "ztf-cns-account-prod-eastus-001-v2"
-$resourceGroupStorage = "ZTF-PROD-STORAGE"
-$resourceGroupDatabase = "ZTF-PROD-DATABASE"
-$resourceGroupMisc = "ZTF-PROD-MISC"
+$resourceGroupStorage = "INFRA-PROD-STORAGE"
+$resourceGroupDatabase = "INFRA-PROD-DATABASE"
+$resourceGroupMisc = "INFRA-PROD-MISC"
 
 Write-Host "Populating Key Vault secrets..." -ForegroundColor Cyan
 

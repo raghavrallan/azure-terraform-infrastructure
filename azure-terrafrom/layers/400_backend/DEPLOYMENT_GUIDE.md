@@ -82,7 +82,7 @@ Edit `variables.tf` or create a `terraform.tfvars` file:
 ```hcl
 Env             = "prod"
 subscription_id = "your-subscription-id"
-rg_name         = "ZTF-PROD-BACKEND"
+rg_name         = "INFRA-PROD-BACKEND"
 rg_location     = "eastus"
 ```
 
@@ -236,7 +236,7 @@ The Container App will automatically pull the new image. If needed, trigger a re
 
 ```bash
 CONTAINER_APP_NAME=$(terraform output -raw container_app_name)
-RESOURCE_GROUP="ZTF-PROD-BACKEND"
+RESOURCE_GROUP="INFRA-PROD-BACKEND"
 
 az containerapp update \
   --name $CONTAINER_APP_NAME \
@@ -291,8 +291,8 @@ Expected: All requests should succeed with 200 OK responses
 ### Test 3: Verify Application Gateway Health
 
 ```bash
-RESOURCE_GROUP="ZTF-PROD-BACKEND"
-APP_GATEWAY_NAME="ZTF-apg-appgateway-prod-eus-001"
+RESOURCE_GROUP="INFRA-PROD-BACKEND"
+APP_GATEWAY_NAME="INFRA-apg-appgateway-prod-eus-001"
 
 # Check backend health
 az network application-gateway show-backend-health \
@@ -363,8 +363,8 @@ Expected: Backend pool should show "Healthy" status
 1. Verify public IP is assigned:
    ```bash
    az network public-ip show \
-     --name "ZTF-pip-publicip-prod-eus-001" \
-     --resource-group "ZTF-PROD-BASE"
+     --name "INFRA-pip-publicip-prod-eus-001" \
+     --resource-group "INFRA-PROD-BASE"
    ```
 
 2. Check NSG rules on Application Gateway subnet

@@ -33,7 +33,7 @@ variable "counts" {
 
 locals {
   EnvAcct     = var.Env == "prod" ? "prod" : "nonp"
-  gatway_name = "ZTF-apg-appgateway-${var.Env}-${local.location}-${var.counts}"
+  gatway_name = "INFRA-apg-appgateway-${var.Env}-${local.location}-${var.counts}"
 }
 
 variable "certificate_id" {

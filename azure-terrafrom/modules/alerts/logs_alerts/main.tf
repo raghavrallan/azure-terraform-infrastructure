@@ -1,5 +1,5 @@
 resource "azurerm_monitor_scheduled_query_rules_alert" "storage_alert" {
-  name                    = "ZTF-alt-alerts-${var.Env}-global-${var.counts}"
+  name                    = "INFRA-alt-alerts-${var.Env}-global-${var.counts}"
   location                = var.rg_location
   resource_group_name     = var.rg_name
   auto_mitigation_enabled = var.auto_resolve

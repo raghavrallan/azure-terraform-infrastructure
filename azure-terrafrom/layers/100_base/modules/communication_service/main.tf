@@ -1,5 +1,5 @@
 resource "azurerm_communication_service" "communication_service" {
-  name                = "ZTF-cms-communication-${var.Env}-${var.rg_location}-${var.counts}-v2"
+  name                = "INFRA-cms-communication-${var.Env}-${var.rg_location}-${var.counts}-v2"
   resource_group_name = var.rg_name
   data_location       = "United States"
 
@@ -11,7 +11,7 @@ resource "azurerm_communication_service" "communication_service" {
 }
 
 resource "azurerm_email_communication_service" "email_service" {
-  name                = "ZTF-ecm-email-${var.Env}-${var.rg_location}-${var.counts}"
+  name                = "INFRA-ecm-email-${var.Env}-${var.rg_location}-${var.counts}"
   resource_group_name = var.rg_name
   data_location       = "United States"
 

@@ -101,7 +101,7 @@ module "container_app_001" {
     },
     {
       name  = "CosmosDb__DatabaseName"
-      value = "ZTF-uat-db"
+      value = "INFRA-uat-db"
     },
     {
       name        = "Jwt__Key"
@@ -141,7 +141,7 @@ module "container_app_001" {
     },
     {
       name  = "EmailSettings__SenderEmail"
-      value = "donotreply@ztfortio.com"
+      value = "noreply@example.com"
     },
     {
       name  = "Common__environment"

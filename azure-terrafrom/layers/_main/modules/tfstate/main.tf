@@ -11,27 +11,27 @@ resource "azurerm_resource_group" "tfstate" {
 }
 
 resource "azurerm_resource_group" "backend" {
-  name     = upper("ZTF-${var.env}-BACKEND")
+  name     = upper("INFRA-${var.env}-BACKEND")
   location = var.region
 }
 
 resource "azurerm_resource_group" "storage" {
-  name     = upper("ZTF-${var.env}-STORAGE")
+  name     = upper("INFRA-${var.env}-STORAGE")
   location = var.region
 }
 
 resource "azurerm_resource_group" "database" {
-  name     = upper("ZTF-${var.env}-DATABASE")
+  name     = upper("INFRA-${var.env}-DATABASE")
   location = var.region
 }
 
 resource "azurerm_resource_group" "misc" {
-  name     = upper("ZTF-${var.env}-MISC")
+  name     = upper("INFRA-${var.env}-MISC")
   location = var.region
 }
 
 resource "azurerm_resource_group" "frontend" {
-  name     = upper("ZTF-${var.env}-FRONTEND")
+  name     = upper("INFRA-${var.env}-FRONTEND")
   location = var.region
 }
 

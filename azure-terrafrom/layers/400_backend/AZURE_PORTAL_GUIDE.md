@@ -25,8 +25,8 @@ Before starting, ensure you have:
 
 1. **Azure Subscription** with appropriate permissions
 2. **Resource Groups** created:
-   - `ZTF-PROD-BASE` (for base infrastructure)
-   - `ZTF-PROD-BACKEND` (for backend services)
+   - `INFRA-PROD-BASE` (for base infrastructure)
+   - `INFRA-PROD-BACKEND` (for backend services)
 3. **Base Infrastructure** (from Layer 100):
    - Virtual Network with subnets
    - Log Analytics Workspace
@@ -49,7 +49,7 @@ Before starting, ensure you have:
 ### 1.2 Configure Basic Settings
 
 - **Subscription**: Select your subscription
-- **Resource Group**: `ZTF-PROD-BACKEND`
+- **Resource Group**: `INFRA-PROD-BACKEND`
 - **Registry Name**: `ztfacrprodeus001` (must be globally unique)
 - **Location**: `East US`
 - **SKU**: `Basic` (for dev/test) or `Standard` (for production)
@@ -89,14 +89,14 @@ Before starting, ensure you have:
 ### 2.2 Configure Basics
 
 - **Subscription**: Select your subscription
-- **Resource Group**: Create new: `ZTF-PROD-BACKEND-CA`
+- **Resource Group**: Create new: `INFRA-PROD-BACKEND-CA`
 - **Environment Name**: `ztf-cae-environment-prod-eus-001`
 - **Region**: `East US`
 
 ### 2.3 Configure Monitoring
 
 - **Log Analytics Workspace**: Select existing from base layer
-  - Example: `ZTF-log-workspace-prod-eus-001`
+  - Example: `INFRA-log-workspace-prod-eus-001`
 
 ### 2.4 Configure Networking
 
@@ -130,7 +130,7 @@ Before starting, ensure you have:
 ### 3.2 Configure Basics
 
 - **Subscription**: Select your subscription
-- **Resource Group**: `ZTF-PROD-BACKEND`
+- **Resource Group**: `INFRA-PROD-BACKEND`
 - **Container App Name**: `ztf-cap-container-prod-eus-001`
 - **Region**: `East US`
 - **Container App Environment**: Select the environment created in Step 2
@@ -178,7 +178,7 @@ Before starting, ensure you have:
 1. Go to **"Identity"** tab
 2. **User Assigned Identity**: Add
 3. Select the managed identity from base layer
-   - Example: `ZTF-identity-prod-eus-001`
+   - Example: `INFRA-identity-prod-eus-001`
 
 ### 3.8 Configure Secrets
 
@@ -206,7 +206,7 @@ Navigate to **"Environment Variables"** and add:
 |------|------|--------------|
 | `CosmosDb__AccountEndpoint` | Secret | database-endpoint |
 | `CosmosDb__AccountKey` | Secret | database-key |
-| `CosmosDb__DatabaseName` | Plain | ZTF-uat-db |
+| `CosmosDb__DatabaseName` | Plain | INFRA-uat-db |
 | `Common__environment` | Plain | Production |
 | `APPLICATIONINSIGHTS_CONNECTION_STRING` | Plain | From base layer |
 
@@ -237,8 +237,8 @@ Navigate to **"Environment Variables"** and add:
 ### 4.2 Configure Basics
 
 - **Subscription**: Select your subscription
-- **Resource Group**: `ZTF-PROD-BACKEND`
-- **Application Gateway Name**: `ZTF-apg-appgateway-prod-eus-001`
+- **Resource Group**: `INFRA-PROD-BACKEND`
+- **Application Gateway Name**: `INFRA-apg-appgateway-prod-eus-001`
 - **Region**: `East US`
 - **Tier**: `Standard V2` (for developer tier)
 - **Enable Autoscaling**: No
@@ -257,7 +257,7 @@ Navigate to **"Environment Variables"** and add:
 
 - **Frontend IP Address Type**: Public
 - **Public IP Address**: Select existing public IP from base layer
-  - Example: `ZTF-pip-publicip-prod-eus-001`
+  - Example: `INFRA-pip-publicip-prod-eus-001`
 
 ### 4.5 Configure Backends
 
@@ -359,7 +359,7 @@ Click **"Add"**
 
 1. Navigate to **"Web Application Firewall"** tab
 2. Click **"Create new policy"**
-3. **Name**: `ZTF-waf-policy-prod-001`
+3. **Name**: `INFRA-waf-policy-prod-001`
 4. **Policy State**: Enabled
 5. **Policy Mode**: Detection (or Prevention for production)
 6. **Rule Set**: OWASP 3.2
@@ -490,7 +490,7 @@ docker push ztfacrprodeus001.azurecr.io/sample-api:latest
 ```bash
 az containerapp update \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --image ztfacrprodeus001.azurecr.io/sample-api:latest
 ```
 

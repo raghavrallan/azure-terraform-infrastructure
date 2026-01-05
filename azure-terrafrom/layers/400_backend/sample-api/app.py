@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home():
     """Root endpoint - Welcome message"""
     return jsonify({
-        "message": "Welcome to ZTF Sample API",
+        "message": "Welcome to INFRA Sample API",
         "status": "healthy",
         "version": "1.0.0",
         "timestamp": datetime.utcnow().isoformat(),

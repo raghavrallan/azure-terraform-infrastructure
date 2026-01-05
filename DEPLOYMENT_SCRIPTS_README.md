@@ -257,15 +257,15 @@ deployment-20250130-143025.log
 
 | Resource Group | Purpose | Resources |
 |----------------|---------|-----------|
-| `ZTF-PROD-BASE` | Base infrastructure | VNet, Subnets, Key Vault, IPs |
-| `ZTF-PROD-BACKEND` | Backend services | App Gateway, Container Apps |
-| `ZTF-PROD-BACKEND-CA` | Container Apps | Container App Environment |
+| `INFRA-PROD-BASE` | Base infrastructure | VNet, Subnets, Key Vault, IPs |
+| `INFRA-PROD-BACKEND` | Backend services | App Gateway, Container Apps |
+| `INFRA-PROD-BACKEND-CA` | Container Apps | Container App Environment |
 
 ### Base Layer Resources
 
 ```yaml
 Virtual Network:
-  Name: ZTF-vnw-network-prod-eastus-001
+  Name: INFRA-vnw-network-prod-eastus-001
   CIDR: 10.0.0.0/16
   Subnets:
     - Container Apps: 10.0.2.0/24
@@ -273,13 +273,13 @@ Virtual Network:
     - Private Link: 10.0.3.0/24
 
 Key Vault:
-  Name: ZTF-PROD-SECRET
+  Name: INFRA-PROD-SECRET
   Soft Delete: Enabled
   Managed Identity: Enabled
   Secrets: SSL certificate, app configs
 
 Public IP:
-  Name: ZTF-pip-prod-eastus-appgw-001
+  Name: INFRA-pip-prod-eastus-appgw-001
   Type: Static
   SKU: Standard
 
@@ -298,7 +298,7 @@ Container Registry:
   Images: sample-api:latest
 
 Container App Environment:
-  Name: ZTF-cae-environment-prod-eus-001
+  Name: INFRA-cae-environment-prod-eus-001
   Type: Consumption
   VNet: Integrated
   Monitoring: Application Insights
@@ -312,7 +312,7 @@ Container App:
   External Access: Enabled
 
 Application Gateway:
-  Name: ZTF-apg-appgateway-prod-eus-001
+  Name: INFRA-apg-appgateway-prod-eus-001
   SKU: Standard_v2
   Capacity: 1 (Developer tier)
   Frontend:
@@ -405,8 +405,8 @@ curl -kL https://$APP_GW_IP/api/environment
 ```bash
 # Check Application Gateway backend health
 az network application-gateway show-backend-health \
-  --name ZTF-apg-appgateway-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --name INFRA-apg-appgateway-prod-eus-001 \
+  --resource-group INFRA-PROD-BACKEND \
   --query "backendAddressPools[0].backendHttpSettingsCollection[0].servers[0]"
 ```
 
@@ -425,13 +425,13 @@ Expected output:
 # View Container App logs
 az containerapp logs show \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --follow
 
 # View recent logs only
 az containerapp logs show \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --tail 50
 ```
 
@@ -513,18 +513,18 @@ terraform force-unlock <lock-id>
 # Check Container App logs
 az containerapp logs show \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --tail 100
 
 # Restart Container App if needed
 az containerapp revision restart \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND
+  --resource-group INFRA-PROD-BACKEND
 
 # Check health again after 2-3 minutes
 az network application-gateway show-backend-health \
-  --name ZTF-apg-appgateway-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND
+  --name INFRA-apg-appgateway-prod-eus-001 \
+  --resource-group INFRA-PROD-BACKEND
 ```
 
 #### Issue 6: SSL Certificate Upload Failed

@@ -1,5 +1,5 @@
 resource "azurerm_api_management" "api_management" {
-  name                 = "ZTF-api-apimanagement-${var.Env}-eastus-${var.counts}-v2"
+  name                 = "INFRA-api-apimanagement-${var.Env}-eastus-${var.counts}-v2"
   location             = var.rg_location
   resource_group_name  = var.rg_name
   publisher_name       = var.publisher_name
@@ -26,7 +26,7 @@ resource "azurerm_api_management" "api_management" {
 }
 
 resource "azurerm_api_management_logger" "logger" {
-  name                = "ZTF-api-apilogger-${var.Env}-eastus-${var.counts}"
+  name                = "INFRA-api-apilogger-${var.Env}-eastus-${var.counts}"
   api_management_name = azurerm_api_management.api_management.name
   resource_group_name = var.rg_name
   resource_id         = var.application_insights_id

@@ -58,7 +58,7 @@ module "app_gateway_subnet" {
 }
 
 resource "azurerm_network_security_group" "apim_nsg" {
-  name                = "ZTF-nsg-apim-${var.Env}-eastus-001"
+  name                = "INFRA-nsg-apim-${var.Env}-eastus-001"
   location            = var.rg_location
   resource_group_name = var.rg_name
 

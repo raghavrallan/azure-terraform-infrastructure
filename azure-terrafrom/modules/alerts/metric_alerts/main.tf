@@ -1,5 +1,5 @@
 resource "azurerm_monitor_metric_alert" "alerts" {
-  name                = "ZTF-alt-alerts-${var.Env}-global-${var.resource_name}-${var.counts}"
+  name                = "INFRA-alt-alerts-${var.Env}-global-${var.resource_name}-${var.counts}"
   resource_group_name = var.rg_name
   scopes              = [var.resource_id]
   description         = var.description

@@ -1,5 +1,5 @@
 resource "azurerm_container_app_environment" "app_enviornment" {
-  name                               = "ZTF-cae-appenv-${var.Env}-${var.rg_location}-${var.counts}"
+  name                               = "INFRA-cae-appenv-${var.Env}-${var.rg_location}-${var.counts}"
   location                           = var.rg_location
   resource_group_name                = var.rg_name
   log_analytics_workspace_id         = var.log_analytics_id

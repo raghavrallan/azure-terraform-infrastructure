@@ -1,5 +1,5 @@
 resource "azurerm_role_definition" "role" {
-  name        = "ZTF-${var.Env}-${var.role_name}"
+  name        = "INFRA-${var.Env}-${var.role_name}"
   description = var.role_description
   scope       = "/subscriptions/${var.subscription_id}"
 

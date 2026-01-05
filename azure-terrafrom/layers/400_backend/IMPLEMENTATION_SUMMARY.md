@@ -112,7 +112,7 @@ Internet (Public Access BLOCKED) ✗
 ### Container App Status
 ```
 Name: ztf-cap-container-prod-eus-001
-Resource Group: ZTF-PROD-BACKEND
+Resource Group: INFRA-PROD-BACKEND
 External Access: false ✓
 Replicas: 1 Running ✓
 Image: ztfacrregistoryprodeastus001.azurecr.io/sample-api:latest ✓
@@ -230,7 +230,7 @@ Internet → Application Gateway (Public IP)
 | Resource | Name | Type | Status |
 |----------|------|------|--------|
 | Container Registry | ztfacrregistoryprodeastus001 | Basic | Existing |
-| Container App Environment | ZTF-cae-appenv-prod-eastus-001 | Consumption | Existing |
+| Container App Environment | INFRA-cae-appenv-prod-eastus-001 | Consumption | Existing |
 | Container App | ztf-cap-container-prod-eus-001 | Private | Updated ✓ |
 | Container Image | sample-api:latest | Python Flask | Created ✓ |
 
@@ -252,7 +252,7 @@ Internet → Application Gateway (Public IP)
 ```bash
 az containerapp show \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --query "properties.{ExternalEnabled:configuration.ingress.external,Provisioning:provisioningState,Status:latestRevisionName}"
 ```
 
@@ -260,7 +260,7 @@ az containerapp show \
 ```bash
 az containerapp logs show \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --follow
 ```
 
@@ -283,7 +283,7 @@ az acr build \
 # Update container app
 az containerapp update \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --image ztfacrregistoryprodeastus001.azurecr.io/sample-api:v2.0
 ```
 
@@ -331,12 +331,12 @@ az containerapp update \
 # Check revision status
 az containerapp revision list \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND
+  --resource-group INFRA-PROD-BACKEND
 
 # Check logs for errors
 az containerapp logs show \
   --name ztf-cap-container-prod-eus-001 \
-  --resource-group ZTF-PROD-BACKEND \
+  --resource-group INFRA-PROD-BACKEND \
   --tail 100
 ```
 
