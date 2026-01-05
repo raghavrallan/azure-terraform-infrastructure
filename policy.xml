@@ -1,0 +1,15 @@
+<policies>
+  <inbound>
+    <base />
+    <set-backend-service base-url="https://ztf-cap-container-prod-eus-001.internal.happymoss-286f4ac8.eastus.azurecontainerapps.io" />
+  </inbound>
+  <backend>
+    <base />
+  </backend>
+  <outbound>
+    <base />
+  </outbound>
+  <on-error>
+    <base />
+  </on-error>
+</policies>
